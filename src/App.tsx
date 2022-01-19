@@ -1,11 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Login from './pages/Login';
 
-const App = ()=> {
-  return (
-    <></>
-  );
+class App extends React.Component{
+
+  componentDidMount(){
+    
+  }
+
+  
+  render(){
+    return(
+      <>
+        <Login />
+      </>
+    )
+  }
 }
 
 export default App;
