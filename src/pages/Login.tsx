@@ -5,7 +5,7 @@ import GoogleLoginIcon from '../assets/GoogleLoginIcon.png'
 
 const signInwithGoogle = ()=>{
     auth.signInWithPopup(provider)
-    .then(res=>{
+    .then((res:any)=>{
       console.log("login response", res);
     }).catch(alert);
   }
