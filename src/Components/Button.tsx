@@ -11,12 +11,12 @@ const Buttonss: React.FC = () => {
         sx={{
           boxShadow: 1,
           width: '14.8rem',
-          height: '5rem',
+          height: '4rem',
           bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
           color: (theme) =>
             theme.palette.mode === 'dark' ? 'grey.200' : 'grey.400',
         
-         marginTop:"450px",
+         marginTop:"380px",
           textAlign: 'center',
           fontSize: '0.875rem',
           fontWeight: '700',
