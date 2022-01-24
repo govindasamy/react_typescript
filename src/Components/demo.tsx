@@ -4,9 +4,10 @@ import Box from '@mui/material/Box';
 import { useTheme, ThemeProvider, createTheme } from '@mui/material/styles';
 import Brightness4Icon from '@mui/icons-material/Brightness4';
 import Brightness7Icon from '@mui/icons-material/Brightness7';
-import Card from './card'
-import Nav from './Nav'
-import Check from './check';
+import Card from '../Component/card';
+import Check from '../Component/check';
+import SideMenu from './SideMenu';
+
 const ColorModeContext = React.createContext({ toggleColorMode: () => {} });
 
 function MyApp() {
@@ -23,10 +24,10 @@ function MyApp() {
       <IconButton sx={{ ml: 1 }} onClick={colorMode.toggleColorMode} color="inherit">
         {theme.palette.mode === 'dark' ? <Brightness7Icon /> : <Brightness4Icon />}
       </IconButton>
-      <Nav/>
+      {/* <SideMenu/> */}
       
       
-      <Card/>
+      {/* <Card/> */}
      
     
       
