@@ -1,3 +1,4 @@
+
 // import React from 'react';
 // import Login from './pages/Login';
 // import Demo from './Components/demo';
@@ -5,6 +6,12 @@
 // import {ThemeProvider} from '@material-ui/core/styles'
 // import createMuiTheme  from '@material-ui/core/styles';
 // import SideMenu from './Components/SideMenu'
+=======
+import React from 'react';
+import Login from './pages/Login';
+import SideMenu from './Components/SideMenu';
+import AppMenu from './pages/AppMenu';
+>>>>>>> 02d4ecfe51dd848210325074dc44d30570bebc99
 
 
 // class App extends React.Component{
@@ -14,6 +21,7 @@
 //     isLoggedIn : false,
 //   }
 
+<<<<<<< HEAD
 //   componentDidMount(){
 //     this.checkSession()
 //   }
@@ -53,6 +61,24 @@ function App() {
       </div>
     </ThemeContext.Provider>
   );
+=======
+  // componentDidMount(){
+  //   this.checkSession()
+  // }
+
+  // checkSession(){
+  //   let authToken = localStorage.getItem('authToken');
+  //   if(authToken != null || authToken != undefined){
+  //     this.setState({isLoggedIn : true});
+  //   } else {
+  //     this.setState({isLoggedIn : false});
+  //   }
+  // }
+
+  render(){
+      return <AppMenu />
+  }
+>>>>>>> 02d4ecfe51dd848210325074dc44d30570bebc99
 }
 
 export default App;

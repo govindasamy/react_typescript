@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@mui/material/Box';
+import { Typography } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -13,8 +14,22 @@ const useStyles = makeStyles((theme: Theme) =>
      }),
 );
 
-export default function ImageAvatars() {
+interface profileData {
+  imageURL: string;
+  userName: string;
+  // emailId: string
+}
+ const ImageAvatars = (props:profileData)=>{
   const classes = useStyles();
+
+  // const [avatar, setAvatar] = useState<string>("https://media.istockphoto.com/photos/smiling-female-architect-sitting-at-her-office-desk-picture-id1287459398?s=612x612");
+  // const [avatar, setAvatar] = useState<string>("https://media.istockphoto.com/photos/smiling-female-architect-sitting-at-her-office-desk-picture-id1287459398?s=612x612")
+
+  // useEffect(()=>{
+    // let userProfilePic = localStorage.getItem("userProfilePic");
+    // console.log(userProfilePic);
+    // setAvatar(imageURL);
+  // })
 
   return (
     <div >
@@ -31,8 +46,11 @@ export default function ImageAvatars() {
           fontWeight: '700',
         }}
       >
-      <Avatar  className={classes.avatar}alt="Cindy Baker" src="https://media.istockphoto.com/photos/smiling-female-architect-sitting-at-her-office-desk-picture-id1287459398?s=612x612" />
+      <Avatar  className={classes.avatar}alt="Cindy Baker" src={props.imageURL} />
+      <Typography>{props.userName}</Typography>
       </Box>
     </div>
   );
 }
+
+export default ImageAvatars

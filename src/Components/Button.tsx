@@ -3,7 +3,14 @@ import { makeStyles, createStyles } from '@material-ui/core/styles'
 import Button from '@mui/material/Button';
 import Grid from "@material-ui/core/Grid";
 import Box from '@mui/material/Box';
-const Buttonss: React.FC = () => {
+
+type childProps = {
+  onClick?: () => void
+}
+
+const Buttonss: React.FC<childProps> = ({
+  onClick=()=>{}
+}) => {
     const classes = useStyles()
     return (
         <div>
@@ -11,12 +18,12 @@ const Buttonss: React.FC = () => {
         sx={{
           boxShadow: 1,
           width: '14.8rem',
-          height: '5rem',
+          height: '4rem',
           bgcolor: (theme) => (theme.palette.mode === 'dark' ? '#101010' : '#fff'),
           color: (theme) =>
             theme.palette.mode === 'dark' ? 'grey.200' : 'grey.400',
         
-         marginTop:"450px",
+         marginTop:"380px",
           textAlign: 'center',
           fontSize: '0.875rem',
           fontWeight: '700',
@@ -24,7 +31,7 @@ const Buttonss: React.FC = () => {
         }}
       >
             <Grid container justify="center">
-     <Button style={{ backgroundColor:'#DEDCD8', color:'black', marginTop:"15px",}} className={classes.button} variant="contained" >
+     <Button onClick={()=>onClick()} style={{ backgroundColor:'#DEDCD8', color:'black', marginTop:"15px",}} className={classes.button} variant="contained" >
      LOGOUT
    </Button>
    
