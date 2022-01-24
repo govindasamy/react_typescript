@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
 import Drawer from '@material-ui/core/Drawer'
-import AppMenu from './AppMenu';
+import AppMenu from '../pages/AppMenu';
 
 import Buttonss from './Button'
 const App: React.FC = () => {

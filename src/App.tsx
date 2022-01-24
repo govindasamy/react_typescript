@@ -1,6 +1,7 @@
 import React from 'react';
 import Login from './pages/Login';
 import SideMenu from './Components/SideMenu';
+import AppMenu from './pages/AppMenu';
 
 class App extends React.Component{
 
@@ -9,25 +10,21 @@ class App extends React.Component{
     isLoggedIn : false,
   }
 
-  componentDidMount(){
-    this.checkSession()
-  }
+  // componentDidMount(){
+  //   this.checkSession()
+  // }
 
-  checkSession(){
-    let authToken = localStorage.getItem('authToken');
-    if(authToken != null || authToken != undefined){
-      this.setState({isLoggedIn : true});
-    } else {
-      this.setState({isLoggedIn : false});
-    }
-  }
+  // checkSession(){
+  //   let authToken = localStorage.getItem('authToken');
+  //   if(authToken != null || authToken != undefined){
+  //     this.setState({isLoggedIn : true});
+  //   } else {
+  //     this.setState({isLoggedIn : false});
+  //   }
+  // }
 
   render(){
-    if(!this.state.isLoggedIn){
-      return <Login onClick={()=>this.checkSession()}/>
-    } else {
-      return <SideMenu />
-    }
+      return <AppMenu />
   }
 }
 export default App;
