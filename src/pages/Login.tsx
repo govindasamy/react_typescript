@@ -18,6 +18,7 @@ const Login : React.FC<childProps> = ({
       console.log("token", res.credential.accessToken);
       localStorage.setItem('authToken',  res.credential.accessToken);
       localStorage.setItem('userProfilePic', res.additionalUserInfo.profile.picture);
+      localStorage.setItem('userName', res.additionalUserInfo.profile.name);
       onClick();
     }).catch(alert);
   }
