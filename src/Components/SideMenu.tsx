@@ -12,7 +12,7 @@ const App: React.FC = () => {
   return (
     <div className={clsx('App', classes.root)}>
       <CssBaseline />
-     <Box
+     {/* <Box
       
       //style={{float:'right'}}
        // variant="permanent"
@@ -23,7 +23,7 @@ const App: React.FC = () => {
       <AppMenu  /> 
     
     
-      </Box>
+      </Box> */}
     </div>
   )
 }

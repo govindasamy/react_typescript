@@ -31,20 +31,17 @@ const useStyles = makeStyles({
 export function SearchableTable({ rows }: Props) {
 
     const [tableData, setTableData] = useState<any>([]);
+    const [filteredData, setFilteredData] = useState<any>([]);
     const [searched, setSearched] = useState<string>("");
     const classes = useStyles();
 
-    const requestSearch = (searchedVal: any) => {
-        
-        const filteredRows = tableData.filter((row:any) => {
-            console.log(searchedVal);
-            return row.id.toString().toLowerCase().includes(searchedVal.toString().toLowerCase()) ;
-            // || row.name.toString().toLowerCase().includes(searchedVal.toString().toLowerCase()) || row.email.toString().toLowerCase().includes(searchedVal.toString().toLowerCase()) || row.phone.toString().toLowerCase().includes(searchedVal.toString().toLowerCase());
-            // console.log(result);
-            // return result;
+    const requestSearch = (searchedVal: string) => {
+        // id, name, email, phone
+        let filterData = tableData.filter((value: any) => {
+            return value.id.toString().toLowerCase().includes(searchedVal.toLowerCase()) || value.name.toString().toLowerCase().includes(searchedVal.toLowerCase()) || value.email.toString().toLowerCase().includes(searchedVal.toLowerCase()) || value.phone.toString().toLowerCase().includes(searchedVal.toLowerCase())
         });
-        console.log("filteredRows", filteredRows);
-        setTableData(filteredRows);
+        console.log("filterData", filterData);
+        setFilteredData(filterData);
     };
 
     const cancelSearch = () => {
@@ -79,14 +76,24 @@ export function SearchableTable({ rows }: Props) {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {tableData.map((row: any) => (
-                        <TableRow key={row.id}>
-                            <TableCell>{row.id}</TableCell>
-                            <TableCell>{row.name}</TableCell>
-                            <TableCell>{row.email}</TableCell>
-                            <TableCell>{row.phone}</TableCell>
-                        </TableRow>
-                    ))}
+                {filteredData.length > 0 ?
+                        filteredData.map((row: any) => (
+                            <TableRow key={row.id}>
+                                <TableCell>{row.id}</TableCell>
+                                <TableCell>{row.name}</TableCell>
+                                <TableCell>{row.email}</TableCell>
+                                <TableCell>{row.phone}</TableCell>
+                            </TableRow>
+                        ))
+                        :
+                        tableData.map((row: any) => (
+                            <TableRow key={row.id}>
+                                <TableCell>{row.id}</TableCell>
+                                <TableCell>{row.name}</TableCell>
+                                <TableCell>{row.email}</TableCell>
+                                <TableCell>{row.phone}</TableCell>
+                            </TableRow>
+                        ))}
                 </TableBody>
             </Table>
         </Paper>
