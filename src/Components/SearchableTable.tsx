@@ -12,6 +12,7 @@ import Paper from "@material-ui/core/Paper";
 import axios from "axios";
 import { makeStyles } from "@material-ui/styles";
 import SearchBar from "material-ui-search-bar";
+import CarouselWithArrow from "./CarouselWithArrow";
 
 interface Props {
     rows: Array<{
@@ -60,6 +61,8 @@ export function SearchableTable({ rows }: Props) {
     })
 
     return (
+        <div>
+            <CarouselWithArrow/>
         <Paper>
             <SearchBar
           value={searched}
@@ -97,5 +100,6 @@ export function SearchableTable({ rows }: Props) {
                 </TableBody>
             </Table>
         </Paper>
+        </div>
     );
 }
