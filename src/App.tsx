@@ -10,19 +10,6 @@ class App extends React.Component{
     isLoggedIn : false,
   }
 
-  // componentDidMount(){
-  //   this.checkSession()
-  // }
-
-  // checkSession(){
-  //   let authToken = localStorage.getItem('authToken');
-  //   if(authToken != null || authToken != undefined){
-  //     this.setState({isLoggedIn : true});
-  //   } else {
-  //     this.setState({isLoggedIn : false});
-  //   }
-  // }
-
   render(){
       return <AppMenu />
   }
