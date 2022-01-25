@@ -1,9 +1,11 @@
 // SearchableTable
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
+import { AppTheme } from "./AppTheme";
+import { ThemeContext } from "../App";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
@@ -59,16 +61,37 @@ export function SearchableTable({ rows }: Props) {
             })
     })
 
+    const { theme} = useContext(ThemeContext);
+    const headerStyle: AppTheme = {
+        dark: {
+            backgroundColor: '#808080',
+           color: 'white',
+       },
+       light: {
+           backgroundColor: '#e0e0e0',
+           color: 'black',
+       },
+       common: {
+            transition: 'all 1s ease',
+       }
+    };
+ 
+    const themeStyle2 = {
+        ...(theme === 'light' ? headerStyle.light : headerStyle.dark),
+        ...headerStyle.common,
+    };
+
+
     return (
-        <Paper>
-            <SearchBar
+        <Paper >
+            <SearchBar style={themeStyle2}
           value={searched}
           onChange={(searchVal:string) => requestSearch(searchVal)}
           onCancelSearch={() => cancelSearch()}
         />
             <Table className={classes.table}>
-                <TableHead>
-                    <TableRow>
+                <TableHead  style={themeStyle2}> 
+                    <TableRow  style={themeStyle2} >
                         <TableCell>Id</TableCell>
                         <TableCell>Name</TableCell>
                         <TableCell>Email</TableCell>
@@ -78,7 +101,7 @@ export function SearchableTable({ rows }: Props) {
                 <TableBody>
                 {filteredData.length > 0 ?
                         filteredData.map((row: any) => (
-                            <TableRow key={row.id}>
+                            <TableRow  style={themeStyle2}  key={row.id}>
                                 <TableCell>{row.id}</TableCell>
                                 <TableCell>{row.name}</TableCell>
                                 <TableCell>{row.email}</TableCell>
@@ -87,7 +110,7 @@ export function SearchableTable({ rows }: Props) {
                         ))
                         :
                         tableData.map((row: any) => (
-                            <TableRow key={row.id}>
+                            <TableRow  style={themeStyle2} key={row.id}>
                                 <TableCell>{row.id}</TableCell>
                                 <TableCell>{row.name}</TableCell>
                                 <TableCell>{row.email}</TableCell>
