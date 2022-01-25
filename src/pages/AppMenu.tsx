@@ -1,5 +1,6 @@
-
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useContext } from 'react'
+import { ThemeContext } from "../App";
+import { AppTheme } from '../Components/AppTheme'; 
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import Buttonss from '../Components/Button';
 import ImageAvatars from '../Components/SideTopMenu'
@@ -20,6 +21,7 @@ import Login from './Login';
 import CarouselWithArrow from '../Components/CarouselWithArrow';
 import { SearchableTable } from '../Components/SearchableTable';
 import Contributors from '../Components/Contributors';
+import ThemeToggle from '../Components/ThemeToggle';
 
 const AppMenu: React.FC = () => {
   const classes = useStyles()
@@ -48,17 +50,6 @@ const AppMenu: React.FC = () => {
       image: "https://cdn.pixabay.com/photo/2012/02/23/08/40/beautiful-15728_960_720.jpg"
 
     },
-    // {
-    //   name: "dddddd",
-    //   email: "ddddddddd@tarento.com",
-    //   image: "https://cdn.pixabay.com/photo/2017/07/31/21/01/laptop-2561018_960_720.jpg"
-
-    // }, {
-    //   name: "eeeeeeeeee",
-    //   email: "eeeeeeeeee@tarento.com",
-    //   image: "https://media.istockphoto.com/photos/smiling-female-architect-sitting-at-her-office-desk-picture-id1287459398"
-
-    // },
 
   ]
 
@@ -90,12 +81,30 @@ const AppMenu: React.FC = () => {
 
   const imageURL = localStorage.getItem("userProfilePic") as string;
   const userName = localStorage.getItem("userName") as string;
+  const { theme} = useContext(ThemeContext);
+   const headerStyle: AppTheme = {
+       dark: {
+           backgroundColor: '#808080',
+          color: 'white',
+      },
+      light: {
+          backgroundColor: '#e0e0e0',
+          color: 'black',
+      },
+      common: {
+           transition: 'all 1s ease',
+      }
+   };
 
+   const themeStyle2 = {
+       ...(theme === 'light' ? headerStyle.light : headerStyle.dark),
+       ...headerStyle.common,
+   };
   return (
-    <div>
+    <div style={themeStyle2}>
 
       <Router >
-        <div style={{ display: 'flex' }}>
+        <div style={{display: 'flex' }}>
           <Drawer
             style={{ width: '240px' }}
             variant="persistent"
@@ -103,29 +112,37 @@ const AppMenu: React.FC = () => {
             open={true}
             classes={{ paper: classes.drawerPaper }}
           >
-            <ImageAvatars imageURL={imageURL} userName={userName} />
+            <ImageAvatars  imageURL={imageURL} userName={userName} />
 
-            <List   >
-              <Link to="/" className={classes.link}>
+            <List  style={themeStyle2} >
+            <Link style={themeStyle2} to="/" className={classes.link}>
                 <ListItem button>
-                  <ListItemIcon>
+                  <ListItemIcon style={themeStyle2}>
+                    <ThemeToggle />
+                  </ListItemIcon>
+                  <ListItemText primary={theme} />
+                </ListItem>
+              </Link>
+              <Link style={themeStyle2} to="/" className={classes.link}>
+                <ListItem button>
+                  <ListItemIcon style={themeStyle2}>
                     <HomeIcon />
                   </ListItemIcon>
                   <ListItemText primary={"Home"} />
                 </ListItem>
               </Link>
-              <Link to="/about" className={classes.link}>
+              <Link style={themeStyle2} to="/about" className={classes.link}>
                 <ListItem button>
-                  <ListItemIcon>
+                  <ListItemIcon style={themeStyle2}>
                     <RemoveRedEyeIcon />
                   </ListItemIcon>
                   <ListItemText primary={"About"} />
                 </ListItem>
 
               </Link>
-              <Link to="/contributors" className={classes.link}>
+              <Link style={themeStyle2} to="/contributors" className={classes.link}>
                 <ListItem button>
-                  <ListItemIcon>
+                  <ListItemIcon style={themeStyle2}>
                     < PersonIcon />
                   </ListItemIcon>
                   <ListItemText primary={"Contributors"} />
@@ -160,7 +177,7 @@ const AppMenu: React.FC = () => {
                 <Typography variant="h3" gutterBottom>
                   About
                 </Typography>
-                <Typography variant="body1" gutterBottom>
+                <Typography style={themeStyle2} variant="body1" gutterBottom>
                   Nature, in the broadest sense, is the natural, physical, material world or universe. "Nature" can refer to the phenomena of the physical world, and also to life in general. The study of nature is a large, if not the only, part of science. Although humans are part of nature, human activity is often understood as a separate category from other natural phenomena.[1]
 
                   The word nature is borrowed from the Old French nature and is derived from the Latin word natura, or "essential qualities, innate disposition", and in ancient times, literally meant "birth".[2] In ancient philosophy, natura is mostly used as the Latin translation of the Greek word physis (φύσις), which originally related to the intrinsic characteristics that plants, animals, and other features of the world develop of their own accord.[3][4] The concept of nature as a whole, the physical universe, is one of several expansions of the original notion;[1] it began with certain core applications of the word φύσις by pre-Socratic philosophers (though this word had a dynamic dimension then, especially for Heraclitus), and has steadily gained currency ever since
@@ -194,10 +211,11 @@ const useStyles = makeStyles(theme =>
     drawerPaper: { width: 'inherit' },
     link: {
 
-      color: theme.palette.text.primary,
+      color: theme.palette.text.secondary,
 
-      textDecoration: "underline",
+      // textDecoration: "underline",
       textDecorationColor: "blue",
+      
 
     },
 

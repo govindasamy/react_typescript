@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,useContext } from 'react';
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar';
 import Box from '@mui/material/Box';
 import { Typography } from '@material-ui/core';
-
-
+import { AppTheme } from './AppTheme';
+import { ThemeContext } from '../App';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
   avatar:{
@@ -30,10 +30,28 @@ interface profileData {
     // console.log(userProfilePic);
     // setAvatar(imageURL);
   // })
+  const { theme} = useContext(ThemeContext);
+  const headerStyle: AppTheme = {
+      dark: {
+          backgroundColor: '#808080',
+         color: 'white',
+     },
+     light: {
+         backgroundColor: '#e0e0e0',
+         color: 'black',
+     },
+     common: {
+          transition: 'all 1s ease',
+     }
+  };
 
+  const themeStyle2 = {
+      ...(theme === 'light' ? headerStyle.light : headerStyle.dark),
+      ...headerStyle.common,
+  };
   return (
     <div >
-       <Box
+       <Box style={themeStyle2}
         sx={{
           boxShadow: 1,
           width: '14.8rem',
