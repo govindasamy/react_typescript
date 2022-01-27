@@ -61,11 +61,11 @@ const CarouselWithArrow = () =>{
           <Carousel
             data={data}
             time={2000}
-            width="1200px"
+            width="1920px"
             height="500px"
             captionStyle={captionStyle}
             radius="10px"
-            slideNumber={true}
+            slideNumber={false}
             slideNumberStyle={slideNumberStyle}
             captionPosition="bottom"
            // automatic={true}
@@ -74,18 +74,18 @@ const CarouselWithArrow = () =>{
             pauseIconSize="40px"
             slideBackgroundColor="darkgrey"
             slideImageFit="cover"
-            //thumbnails={true}
+            thumbnails={false}
            // thumbnailWidth="100px"
             style={{
               textAlign: "center",
-              maxWidth: "850px",
+              maxWidth: "1920px",
               maxHeight: "500px",
               margin: "40px auto",
             }}
           />
-        </div>
-      </div>
-    </div>
+         </div>
+       </div>
+     </div>
   );
 }
 

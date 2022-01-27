@@ -29,13 +29,13 @@ const AppMenu: React.FC = () => {
       email: "ganavikumarswamy@tarento.com",
       image: "https://media.istockphoto.com/photos/smiling-female-architect-sitting-at-her-office-desk-picture-id1287459398"
 
-    }, 
+    },
     {
       name: "Mrigank",
       email: "mrigank.shringi@tarento.com",
       image: "https://cdn.pixabay.com/photo/2019/12/17/17/09/woman-4702060_960_720.jpg"
 
-    }, 
+    },
     {
       name: "Suraj",
       email: "suraj.gupta@tarento.com",
@@ -144,8 +144,11 @@ const AppMenu: React.FC = () => {
                 <Typography variant="body1" gutterBottom>
                   {
                     isLoggedIn ?
-                      <SearchableTable rows={[{ id: "string", firstName: "string", lastName: "string", email: "string" }]} />
-                      // <CarouselWithArrow />
+                      <div style={{padding : "20px"}}>
+                        <CarouselWithArrow />
+                        <SearchableTable rows={[{ id: "string", firstName: "string", lastName: "string", email: "string" }]} />
+                      </div>
+
                       : <div>
                         <Login onClick={() => checkSession()} />
                       </div>

@@ -62,7 +62,7 @@ export function SearchableTable({ rows }: Props) {
 
     return (
         <div>
-            <CarouselWithArrow/>
+            {/* <CarouselWithArrow/> */}
         <Paper>
             <SearchBar
           value={searched}
