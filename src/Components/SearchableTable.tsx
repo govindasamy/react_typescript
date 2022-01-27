@@ -14,6 +14,7 @@ import Paper from "@material-ui/core/Paper";
 import axios from "axios";
 import { makeStyles } from "@material-ui/styles";
 import SearchBar from "material-ui-search-bar";
+import { Typography } from "@material-ui/core";
 
 interface Props {
     rows: Array<{
@@ -102,19 +103,19 @@ export function SearchableTable({ rows }: Props) {
                 {filteredData.length > 0 ?
                         filteredData.map((row: any) => (
                             <TableRow  style={themeStyle2}  key={row.id}>
-                                <TableCell>{row.id}</TableCell>
-                                <TableCell>{row.name}</TableCell>
-                                <TableCell>{row.email}</TableCell>
-                                <TableCell>{row.phone}</TableCell>
+                                <TableCell><Typography style={themeStyle2}>{row.id}</Typography></TableCell>
+                                <TableCell><Typography style={themeStyle2}>{row.name}</Typography></TableCell>
+                                <TableCell><Typography style={themeStyle2}>{row.email}</Typography></TableCell>
+                                <TableCell><Typography style={themeStyle2}>{row.phone}</Typography></TableCell>
                             </TableRow>
                         ))
                         :
                         tableData.map((row: any) => (
                             <TableRow  style={themeStyle2} key={row.id}>
-                                <TableCell>{row.id}</TableCell>
-                                <TableCell>{row.name}</TableCell>
-                                <TableCell>{row.email}</TableCell>
-                                <TableCell>{row.phone}</TableCell>
+                                <TableCell><Typography style={themeStyle2}>{row.id}</Typography></TableCell>
+                                <TableCell><Typography style={themeStyle2}>{row.name}</Typography></TableCell>
+                                <TableCell><Typography style={themeStyle2}>{row.email}</Typography></TableCell>
+                                <TableCell><Typography style={themeStyle2}>{row.phone}</Typography></TableCell>
                             </TableRow>
                         ))}
                 </TableBody>

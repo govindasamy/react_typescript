@@ -81,7 +81,7 @@ return(
           <Typography gutterBottom variant="h5" component="div" align='center'>
            {person.name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography style={themeStyle2} variant="body2" color="text.secondary">
             {person.email}
           </Typography>
         </CardContent>
